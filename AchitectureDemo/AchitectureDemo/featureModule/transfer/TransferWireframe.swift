@@ -1,12 +1,14 @@
 import UIKit
 
 struct TransferWireframeModel {
+    var sourceIban: String?
+    var targetIban: String?
     var amount: Money?
 }
 
 class TransferWireframe: BaseWireframe {
     
-    private var transferWireframeModel = TransferWireframeModel()
+    private var model = TransferWireframeModel()
     
     // MARK: - Navigation
     
@@ -15,7 +17,7 @@ class TransferWireframe: BaseWireframe {
         let interactor = AmountInputInteractor()
         let presenter = AmountInputPresenter(
             nextHandler: { result in
-                self.transferWireframeModel.amount = result
+                self.model.amount = result
                 self.pushSummary()
             }
         )

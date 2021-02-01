@@ -2,19 +2,25 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var wireframe: TransferWireframe?
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        wireframe = TransferWireframe()
-        wireframe?.present()
+        
+        startApp()
+        
         return true
+    }
+    
+    private func startApp() {
+        setupWindow()
+        
+        let wireframe = TransferWireframe()
+        wireframe.present()
     }
     
     private func setupWindow() {
         let navigationController = UINavigationController()
-        navigationController.navigationBar.isHidden = false
+        navigationController.navigationBar.isHidden = true
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white

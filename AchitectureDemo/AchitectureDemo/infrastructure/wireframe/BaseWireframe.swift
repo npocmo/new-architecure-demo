@@ -27,6 +27,7 @@ class BaseWireframe {
     private func createNavigationController(_ rootViewController: UIViewController) -> UINavigationController {
         let controller = UINavigationController(rootViewController: rootViewController)
         controller.modalPresentationStyle = .fullScreen
+        controller.navigationBar.isHidden = true
         return controller
     }
     

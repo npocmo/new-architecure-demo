@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		432D5B5925C80011005BF279 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5B5825C80011005BF279 /* RestService.swift */; };
+		432D5BA225C82711005BF279 /* Observable+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BA125C82711005BF279 /* Observable+Response.swift */; };
+		432D5BAE25C827E1005BF279 /* BalanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BAD25C827E1005BF279 /* BalanceData.swift */; };
+		432D5BB625C827EE005BF279 /* AmountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BB525C827EE005BF279 /* AmountData.swift */; };
+		4335472C25C40336003B67A3 /* ConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4335472B25C40336003B67A3 /* ConstraintUtils.swift */; };
 		4356075825C2AA5D00DA98ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4356075725C2AA5D00DA98ED /* AppDelegate.swift */; };
 		4356075C25C2AA5D00DA98ED /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4356075B25C2AA5D00DA98ED /* AmountInputView.swift */; };
 		4356076125C2AA5E00DA98ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4356076025C2AA5E00DA98ED /* Assets.xcassets */; };
@@ -44,6 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		432D5B5825C80011005BF279 /* RestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
+		432D5BA125C82711005BF279 /* Observable+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Response.swift"; sourceTree = "<group>"; };
+		432D5BAD25C827E1005BF279 /* BalanceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceData.swift; sourceTree = "<group>"; };
+		432D5BB525C827EE005BF279 /* AmountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountData.swift; sourceTree = "<group>"; };
+		4335472B25C40336003B67A3 /* ConstraintUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintUtils.swift; sourceTree = "<group>"; };
 		4356075425C2AA5D00DA98ED /* ArchitectureDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4356075725C2AA5D00DA98ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4356075B25C2AA5D00DA98ED /* AmountInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputView.swift; sourceTree = "<group>"; };
@@ -94,6 +104,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		432D5B5425C7F981005BF279 /* service_model */ = {
+			isa = PBXGroup;
+			children = (
+				436E458E25C2FAC60055BB97 /* Balance.swift */,
+			);
+			path = service_model;
+			sourceTree = "<group>";
+		};
+		432D5B8E25C80F27005BF279 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				432D5BA125C82711005BF279 /* Observable+Response.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		432D5BA925C827AF005BF279 /* dto_model */ = {
+			isa = PBXGroup;
+			children = (
+				432D5BAD25C827E1005BF279 /* BalanceData.swift */,
+				432D5BB525C827EE005BF279 /* AmountData.swift */,
+			);
+			path = dto_model;
+			sourceTree = "<group>";
+		};
+		432D5BC325C83441005BF279 /* order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = order;
+			sourceTree = "<group>";
+		};
+		432D5BC425C83448005BF279 /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = onboarding;
+			sourceTree = "<group>";
+		};
+		432D5BC525C83454005BF279 /* home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		4335472A25C40325003B67A3 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				4335472B25C40336003B67A3 /* ConstraintUtils.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		4356074B25C2AA5D00DA98ED = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +183,7 @@
 			children = (
 				435607A625C2C2E600DA98ED /* domain */,
 				436E457625C2F9CD0055BB97 /* infrastructure */,
-				4356079F25C2C27C00DA98ED /* featureModules */,
+				4356079F25C2C27C00DA98ED /* featureModule */,
 				435607A725C2C2EB00DA98ED /* res */,
 				4356075725C2AA5D00DA98ED /* AppDelegate.swift */,
 				436E456425C2F31B0055BB97 /* Info.plist */,
@@ -155,12 +219,15 @@
 			path = transfer;
 			sourceTree = "<group>";
 		};
-		4356079F25C2C27C00DA98ED /* featureModules */ = {
+		4356079F25C2C27C00DA98ED /* featureModule */ = {
 			isa = PBXGroup;
 			children = (
+				432D5BC525C83454005BF279 /* home */,
+				432D5BC425C83448005BF279 /* onboarding */,
+				432D5BC325C83441005BF279 /* order */,
 				4356079E25C2C27500DA98ED /* transfer */,
 			);
-			path = featureModules;
+			path = featureModule;
 			sourceTree = "<group>";
 		};
 		435607A625C2C2E600DA98ED /* domain */ = {
@@ -201,8 +268,10 @@
 		436E457625C2F9CD0055BB97 /* infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				432D5B8E25C80F27005BF279 /* extension */,
 				436E459925C2FCF40055BB97 /* model */,
 				436E457B25C2F9F90055BB97 /* network */,
+				4335472A25C40325003B67A3 /* view */,
 				436E457A25C2F9F40055BB97 /* wireframe */,
 			);
 			path = infrastructure;
@@ -219,6 +288,7 @@
 		436E457B25C2F9F90055BB97 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				432D5B5825C80011005BF279 /* RestService.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -226,7 +296,8 @@
 		436E458425C2FA4E0055BB97 /* balance */ = {
 			isa = PBXGroup;
 			children = (
-				436E458E25C2FAC60055BB97 /* Balance.swift */,
+				432D5BA925C827AF005BF279 /* dto_model */,
+				432D5B5425C7F981005BF279 /* service_model */,
 				436E457C25C2FA200055BB97 /* BalanceService.swift */,
 			);
 			path = balance;
@@ -243,8 +314,8 @@
 		436E459925C2FCF40055BB97 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				436E459A25C2FD030055BB97 /* Money.swift */,
 				436E459F25C2FD5E0055BB97 /* Currency.swift */,
+				436E459A25C2FD030055BB97 /* Money.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -410,15 +481,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				436E45A025C2FD5E0055BB97 /* Currency.swift in Sources */,
+				432D5B5925C80011005BF279 /* RestService.swift in Sources */,
 				4356075C25C2AA5D00DA98ED /* AmountInputView.swift in Sources */,
+				432D5BA225C82711005BF279 /* Observable+Response.swift in Sources */,
 				436E458725C2FA610055BB97 /* AccountType.swift in Sources */,
 				4356075825C2AA5D00DA98ED /* AppDelegate.swift in Sources */,
+				4335472C25C40336003B67A3 /* ConstraintUtils.swift in Sources */,
+				432D5BB625C827EE005BF279 /* AmountData.swift in Sources */,
 				436E456F25C2F3D60055BB97 /* BaseWireframe.swift in Sources */,
 				436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */,
 				4356078E25C2BE4C00DA98ED /* TransferWireframe.swift in Sources */,
 				436E458F25C2FAC60055BB97 /* Balance.swift in Sources */,
 				436E45A825C302E90055BB97 /* AmountInputPresenter.swift in Sources */,
 				436E45AD25C302F40055BB97 /* AmountInputInteractor.swift in Sources */,
+				432D5BAE25C827E1005BF279 /* BalanceData.swift in Sources */,
 				436E459B25C2FD030055BB97 /* Money.swift in Sources */,
 				436E457D25C2FA200055BB97 /* BalanceService.swift in Sources */,
 			);
