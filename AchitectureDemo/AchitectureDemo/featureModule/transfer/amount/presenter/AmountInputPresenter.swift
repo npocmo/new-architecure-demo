@@ -3,7 +3,7 @@ import RxSwift
 
 protocol AmountInputPresenterProtocol {
     func viewDidLoad()
-    func onNextButtonTouched(amount: Money)
+    func onNextButtonTouched(amount: String?)
 }
 
 class AmountInputPresenter {
@@ -23,7 +23,7 @@ class AmountInputPresenter {
         interactor?.getBalance(for: .giro)
             .subscribe(
                 onSuccess: { [weak self] balance in
-                    self?.view?.updateView(viewState: .dataLoaded(balance: balance))
+                    self?.view?.updateView(viewState: .updateAvailableAmount(balance: balance))
                 },
                 onFailure: { [weak self] error in
                     self?.view?.updateView(viewState: .availableAmountFetchFailed)
@@ -32,7 +32,11 @@ class AmountInputPresenter {
             .disposed(by: disposeBag)
     }
     
-    func onNextButtonTouched(amount: Money) {
-        nextHandler?(amount)
+    func onNextButtonTouched(amount: String?) {
+        guard let amount = amount, let amountAsDecimal = Decimal(string: amount) else {
+            return
+        }
+        let money = Money(value: amountAsDecimal, currency: Currency.init(iso: "EUR"))
+        nextHandler?(money)
     }
 }

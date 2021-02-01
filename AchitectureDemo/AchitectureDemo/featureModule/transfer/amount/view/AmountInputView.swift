@@ -74,6 +74,12 @@ class AmountInputView: UIViewController, AmountInputViewProtocol {
         
         nextButton.setTitle("Next", for: .normal)
         nextButton.setTitleColor(.black, for: .normal)
+        
+        nextButton.addTarget(self, action: #selector(handleNextButtonClick), for: .touchUpInside)
+    }
+    
+    @objc func handleNextButtonClick(sender: UIButton) {
+        presenter?.onNextButtonTouched(amount: editTextField.text!)
     }
     
     // MARK: - AmountInputViewProtocol
@@ -83,7 +89,7 @@ class AmountInputView: UIViewController, AmountInputViewProtocol {
         case .loading:
             // TODO
             break
-        case .dataLoaded(balance: let balance):
+        case .updateAvailableAmount(balance: let balance):
             availableAmountLabel.text = "Available amount: " + balance.amount.value.description + " " +  balance.amount.currency.iso
         case .availableAmountFetchFailed:
             availableAmountLabel.text = "-"

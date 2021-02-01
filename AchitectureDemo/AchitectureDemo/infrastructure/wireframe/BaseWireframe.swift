@@ -14,7 +14,9 @@ class BaseWireframe {
         }
     }
     
-    func push(_ view: UIViewController) {
+    func push(_ view: UIViewController?) {
+        guard let view = view else { return }
+
         pushTo(visibleNavigationController(), view: view, animated: true)
     }
     
@@ -26,7 +28,7 @@ class BaseWireframe {
     
     private func createNavigationController(_ rootViewController: UIViewController) -> UINavigationController {
         let controller = UINavigationController(rootViewController: rootViewController)
-        controller.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .overFullScreen
         controller.navigationBar.isHidden = true
         return controller
     }

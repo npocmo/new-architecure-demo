@@ -2,7 +2,7 @@ import RxSwift
 import Foundation
 
 // TODO: Request and Response should be URLRequest, or Moya.Request etc.
-struct Request {
+protocol Request {
 }
 
 struct Response {

@@ -5,23 +5,6 @@ protocol BalanceServiceProtocol {
     func getBalance(for accountType: AccountType) -> Single<Balance>
 }
 
-class BankingTarget {
-    private let api: BankingAPI
-    
-    init(_ api: BankingAPI) {
-        self.api = api
-    }
-    
-    func getRequest() -> Request {
-        // TODO: create Request
-        return Request()
-    }
-}
-
-enum BankingAPI {
-    case getBalance(_ accountType: AccountType)
-}
-
 class BalanceService: BalanceServiceProtocol {
     static let instance = BalanceService()
     
@@ -30,26 +13,23 @@ class BalanceService: BalanceServiceProtocol {
     private init() { }
     
     func getBalance(for accountType: AccountType) -> Single<Balance> {
-        return restSevice.request(BankingTarget(.getBalance(accountType)).getRequest())
+        return restSevice.request(BalanceRequest())
             .mapObject(BalanceData.self)
-            .flatMap { balanceData -> Observable<Balance> in
-                guard let result = self.mapToBalance(balanceData) else {
-                    return Observable.error(RxError.noElements)
-                }
-                return Observable.just(result)
-            }.asSingle()
+            .flatMap(mapToBalance)
+            .asSingle()
     }
     
-    private func mapToBalance(_ data: BalanceData) -> Balance? {
+    private func mapToBalance(_ data: BalanceData?) -> Observable<Balance> {
         guard
+            let data = data,
             let amount = data.availableAmount?.value,
             let currency = data.availableAmount?.currency,
             let value = Decimal(string: amount) else {
-            return nil
+            return Observable.error(RxError.noElements)
         }
         
         let availableAmount = Money(value: value, currency: Currency(iso: currency))
-        return Balance(amount: availableAmount)
+        return Observable.just(Balance(amount: availableAmount))
     }
 }
 

@@ -30,6 +30,18 @@ class TransferWireframe: BaseWireframe {
     }
     
     func pushSummary() {
+        let transferModel = TransferModel(sourceIban: "DE12500105170648489890", targetIban: "DE12500105170648489890", amount: model.amount!)
+        let view = SummaryView()
+        let interactor = SummaryInteractor()
+        let presenter = SummaryPresenter(
+            model: transferModel,
+            nextHandler: nil
+        )
         
+        presenter.view = view
+        presenter.interactor = interactor
+        view.presenter = presenter
+        
+        push(presenter.view)
     }
 }

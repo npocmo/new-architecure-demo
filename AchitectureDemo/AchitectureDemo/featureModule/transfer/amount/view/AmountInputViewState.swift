@@ -1,6 +1,6 @@
 enum AmountInputViewState {
     case
     loading,
-    dataLoaded(balance: Balance),
+    updateAvailableAmount(balance: Balance),
     availableAmountFetchFailed
 }
