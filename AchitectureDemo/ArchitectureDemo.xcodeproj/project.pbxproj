@@ -136,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				432D5BAD25C827E1005BF279 /* BalanceData.swift */,
-				432D5BB525C827EE005BF279 /* AmountData.swift */,
 			);
 			path = dto_model;
 			sourceTree = "<group>";
@@ -337,6 +336,7 @@
 		436E457B25C2F9F90055BB97 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				43AF6EEF25C9AE2800B2595E /* model */,
 				432D5B5825C80011005BF279 /* RestService.swift */,
 			);
 			path = network;
@@ -393,6 +393,14 @@
 				436E45F225C30E550055BB97 /* AmountInputViewState.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		43AF6EEF25C9AE2800B2595E /* model */ = {
+			isa = PBXGroup;
+			children = (
+				432D5BB525C827EE005BF279 /* AmountData.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
