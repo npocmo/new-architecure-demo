@@ -8,16 +8,19 @@ protocol AmountInputPresenterProtocol {
 
 class AmountInputPresenter: AmountInputPresenterProtocol {
     private weak var view: AmountInputViewProtocol?
+    private var interactor: AmountInputInteractorProtocol?
     private let nextHandler: ((Money) -> Void)?
     private let balanceService: BalanceServiceProtocol?
     private let disposeBag = DisposeBag()
     
     init(
         view: AmountInputViewProtocol?,
+        interactor: AmountInputInteractorProtocol?,
         balanceService: BalanceServiceProtocol? = serviceLocator.balanceService,
         nextHandler: ((Money) -> Void)?
     ) {
         self.view = view
+        self.interactor = interactor
         self.balanceService = balanceService
         self.nextHandler = nextHandler
     }
@@ -25,7 +28,7 @@ class AmountInputPresenter: AmountInputPresenterProtocol {
     // MARK: AmountInputPresenterProtocol
     
     func onViewDidLoad() {
-        balanceService?.getBalance(for: .giro)
+        interactor?.getAvailableBalance(for: .giro)
             .map(mapToAmountInputBalanceViewModel)
             .subscribe(
                 onSuccess: { [weak self] balance in

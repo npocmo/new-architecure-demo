@@ -12,9 +12,6 @@ class TransferWireframe: BaseWireframe {
     
     private var flowModel = TransferWireframeFlowModel()
     
-    private var amountInputView : AmountInputView?
-    private var summaryView : SummaryView?
-    
     // MARK: - Flow
     
     init(entryPoint: UINavigationController, completionHandler: (() -> Void)?) {
@@ -27,18 +24,20 @@ class TransferWireframe: BaseWireframe {
     }
     
     private func presentAmount() {
-        amountInputView = AmountInputView()
+        let view = AmountInputView()
+        let interactor = AmountInputInteractor()
         let presenter = AmountInputPresenter(
-            view: amountInputView,
+            view: view,
+            interactor: interactor,
             nextHandler: { result in
                 self.flowModel.amount = result
                 self.pushSummary()
             }
         )
         
-        amountInputView?.presenter = presenter
+        view.presenter = presenter
         
-        present(entryPoint: entryPoint, viewController: amountInputView!)
+        present(entryPoint: entryPoint, viewController: view)
     }
     
     private func pushSummary() {

@@ -36,6 +36,7 @@
 		436E45A025C2FD5E0055BB97 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E459F25C2FD5E0055BB97 /* Currency.swift */; };
 		436E45A825C302E90055BB97 /* AmountInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45A725C302E90055BB97 /* AmountInputPresenter.swift */; };
 		436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45F225C30E550055BB97 /* AmountInputViewState.swift */; };
+		43994DB325D3E80C009D56BB /* AmountInputInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		436E459F25C2FD5E0055BB97 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		436E45A725C302E90055BB97 /* AmountInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputPresenter.swift; sourceTree = "<group>"; };
 		436E45F225C30E550055BB97 /* AmountInputViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputViewState.swift; sourceTree = "<group>"; };
+		43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 		435607B425C2DC1B00DA98ED /* amount */ = {
 			isa = PBXGroup;
 			children = (
+				43994DB125D3E7F9009D56BB /* interactor */,
 				436E45F025C30E180055BB97 /* presenter */,
 				436E45F125C30E220055BB97 /* view */,
 			);
@@ -396,6 +399,14 @@
 				4356075B25C2AA5D00DA98ED /* AmountInputView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		43994DB125D3E7F9009D56BB /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */,
+			);
+			path = interactor;
 			sourceTree = "<group>";
 		};
 		43AF6EEF25C9AE2800B2595E /* model */ = {
@@ -556,6 +567,7 @@
 				434969E725CD30130076B376 /* ServiceLocator.swift in Sources */,
 				4356078E25C2BE4C00DA98ED /* TransferWireframe.swift in Sources */,
 				432D5BD525C83EA8005BF279 /* SummaryView.swift in Sources */,
+				43994DB325D3E80C009D56BB /* AmountInputInteractor.swift in Sources */,
 				432D5BD025C83C92005BF279 /* SummaryPresenter.swift in Sources */,
 				432D5BF825C86003005BF279 /* BalanceRequest.swift in Sources */,
 				432D5BDF25C83F93005BF279 /* SummaryViewState.swift in Sources */,
