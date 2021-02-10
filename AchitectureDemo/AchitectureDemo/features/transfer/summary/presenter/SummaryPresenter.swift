@@ -38,6 +38,6 @@ class SummaryPresenter: SummaryPresenterProtocol {
     }
     
     func onNextButtonTouched() {
-        
+        nextHandler?()
     }
 }

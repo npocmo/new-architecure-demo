@@ -37,7 +37,7 @@ class TransferWireframe: BaseWireframe {
         
         view.presenter = presenter
         
-        present(entryPoint: entryPoint, viewController: view)
+        present(on: entryPoint, viewController: view, animated: true)
     }
     
     private func pushSummary() {
@@ -47,11 +47,13 @@ class TransferWireframe: BaseWireframe {
         let presenter = SummaryPresenter(
             view: summaryView,
             model: transferModel,
-            nextHandler: nil
+            nextHandler: {
+                //self.pop(animated: true)
+            }
         )
         
         summaryView.presenter = presenter
         
-        push(viewController: summaryView)
+        push(viewController: summaryView, animated: true)
     }
 }

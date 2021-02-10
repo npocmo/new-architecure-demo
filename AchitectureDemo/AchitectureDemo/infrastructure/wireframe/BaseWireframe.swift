@@ -4,7 +4,7 @@ class BaseWireframe {
     
     private var navigationViewController: UINavigationController?
     
-    func present(entryPoint: UINavigationController, viewController: UIViewController) {
+    func present(on entryPoint: UINavigationController, viewController: UIViewController, animated: Bool) {
         navigationViewController = UINavigationController(rootViewController: viewController)
         navigationViewController?.modalPresentationStyle = .overFullScreen
         
@@ -13,10 +13,14 @@ class BaseWireframe {
         }
         navigationViewController.navigationBar.isHidden = true
         
-        entryPoint.present(navigationViewController, animated: true, completion: nil)
+        entryPoint.present(navigationViewController, animated: animated, completion: nil)
     }
     
-    func push(viewController: UIViewController) {
-        self.navigationViewController?.pushViewController(viewController, animated: true)
+    func push(viewController: UIViewController, animated: Bool) {
+        self.navigationViewController?.pushViewController(viewController, animated: animated)
+    }
+    
+    func pop(animated: Bool) {
+        navigationViewController?.popViewController(animated: animated)
     }
 }
