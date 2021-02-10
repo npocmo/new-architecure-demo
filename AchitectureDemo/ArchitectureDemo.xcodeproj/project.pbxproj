@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4303DBA025CD4ED900D5C5B8 /* ArchitectureDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303DB9F25CD4ED900D5C5B8 /* ArchitectureDescription.swift */; };
 		432D5B5925C80011005BF279 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5B5825C80011005BF279 /* RestService.swift */; };
 		432D5BA225C82711005BF279 /* Observable+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BA125C82711005BF279 /* Observable+Response.swift */; };
 		432D5BAE25C827E1005BF279 /* BalanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BAD25C827E1005BF279 /* BalanceData.swift */; };
 		432D5BB625C827EE005BF279 /* AmountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BB525C827EE005BF279 /* AmountData.swift */; };
 		432D5BD025C83C92005BF279 /* SummaryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BCF25C83C92005BF279 /* SummaryPresenter.swift */; };
 		432D5BD525C83EA8005BF279 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BD425C83EA8005BF279 /* SummaryView.swift */; };
-		432D5BDA25C83EB0005BF279 /* SummaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BD925C83EB0005BF279 /* SummaryInteractor.swift */; };
 		432D5BDF25C83F93005BF279 /* SummaryViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BDE25C83F93005BF279 /* SummaryViewState.swift */; };
 		432D5BE525C84389005BF279 /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BE425C84389005BF279 /* TransferService.swift */; };
 		432D5BF825C86003005BF279 /* BalanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D5BF725C86003005BF279 /* BalanceRequest.swift */; };
 		4335472C25C40336003B67A3 /* ConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4335472B25C40336003B67A3 /* ConstraintUtils.swift */; };
+		4340A9D625CAEC39007C95E0 /* AmountInputBalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340A9D525CAEC39007C95E0 /* AmountInputBalanceViewModel.swift */; };
+		434969E725CD30130076B376 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434969E625CD30130076B376 /* ServiceLocator.swift */; };
 		4356075825C2AA5D00DA98ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4356075725C2AA5D00DA98ED /* AppDelegate.swift */; };
 		4356075C25C2AA5D00DA98ED /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4356075B25C2AA5D00DA98ED /* AmountInputView.swift */; };
 		4356076125C2AA5E00DA98ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4356076025C2AA5E00DA98ED /* Assets.xcassets */; };
@@ -33,7 +35,6 @@
 		436E459B25C2FD030055BB97 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E459A25C2FD030055BB97 /* Money.swift */; };
 		436E45A025C2FD5E0055BB97 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E459F25C2FD5E0055BB97 /* Currency.swift */; };
 		436E45A825C302E90055BB97 /* AmountInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45A725C302E90055BB97 /* AmountInputPresenter.swift */; };
-		436E45AD25C302F40055BB97 /* AmountInputInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45AC25C302F40055BB97 /* AmountInputInteractor.swift */; };
 		436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45F225C30E550055BB97 /* AmountInputViewState.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,17 +56,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4303DB9F25CD4ED900D5C5B8 /* ArchitectureDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureDescription.swift; sourceTree = "<group>"; };
 		432D5B5825C80011005BF279 /* RestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
 		432D5BA125C82711005BF279 /* Observable+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Response.swift"; sourceTree = "<group>"; };
 		432D5BAD25C827E1005BF279 /* BalanceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceData.swift; sourceTree = "<group>"; };
 		432D5BB525C827EE005BF279 /* AmountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountData.swift; sourceTree = "<group>"; };
 		432D5BCF25C83C92005BF279 /* SummaryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPresenter.swift; sourceTree = "<group>"; };
 		432D5BD425C83EA8005BF279 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		432D5BD925C83EB0005BF279 /* SummaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryInteractor.swift; sourceTree = "<group>"; };
 		432D5BDE25C83F93005BF279 /* SummaryViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewState.swift; sourceTree = "<group>"; };
 		432D5BE425C84389005BF279 /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
 		432D5BF725C86003005BF279 /* BalanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceRequest.swift; sourceTree = "<group>"; };
 		4335472B25C40336003B67A3 /* ConstraintUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintUtils.swift; sourceTree = "<group>"; };
+		4340A9D525CAEC39007C95E0 /* AmountInputBalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputBalanceViewModel.swift; sourceTree = "<group>"; };
+		434969E625CD30130076B376 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		4356075425C2AA5D00DA98ED /* ArchitectureDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4356075725C2AA5D00DA98ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4356075B25C2AA5D00DA98ED /* AmountInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputView.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 		436E459A25C2FD030055BB97 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		436E459F25C2FD5E0055BB97 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		436E45A725C302E90055BB97 /* AmountInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputPresenter.swift; sourceTree = "<group>"; };
-		436E45AC25C302F40055BB97 /* AmountInputInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputInteractor.swift; sourceTree = "<group>"; };
 		436E45F225C30E550055BB97 /* AmountInputViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputViewState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4303DB9925CD4CD600D5C5B8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				432D5BDE25C83F93005BF279 /* SummaryViewState.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		432D5B5425C7F981005BF279 /* service_model */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,18 +182,10 @@
 		432D5BCD25C83C78005BF279 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				4303DB9925CD4CD600D5C5B8 /* model */,
 				432D5BD425C83EA8005BF279 /* SummaryView.swift */,
-				432D5BDE25C83F93005BF279 /* SummaryViewState.swift */,
 			);
 			path = view;
-			sourceTree = "<group>";
-		};
-		432D5BCE25C83C7E005BF279 /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				432D5BD925C83EB0005BF279 /* SummaryInteractor.swift */,
-			);
-			path = interactor;
 			sourceTree = "<group>";
 		};
 		432D5BE325C8437B005BF279 /* transfer */ = {
@@ -200,6 +202,15 @@
 				4335472B25C40336003B67A3 /* ConstraintUtils.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		4340A9D425CAEC2C007C95E0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4340A9D525CAEC39007C95E0 /* AmountInputBalanceViewModel.swift */,
+				436E45F225C30E550055BB97 /* AmountInputViewState.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		4356074B25C2AA5D00DA98ED = {
@@ -227,7 +238,7 @@
 			children = (
 				435607A625C2C2E600DA98ED /* domain */,
 				436E457625C2F9CD0055BB97 /* infrastructure */,
-				4356079F25C2C27C00DA98ED /* featureModule */,
+				4356079F25C2C27C00DA98ED /* features */,
 				435607A725C2C2EB00DA98ED /* res */,
 				4356075725C2AA5D00DA98ED /* AppDelegate.swift */,
 				436E456425C2F31B0055BB97 /* Info.plist */,
@@ -263,7 +274,7 @@
 			path = transfer;
 			sourceTree = "<group>";
 		};
-		4356079F25C2C27C00DA98ED /* featureModule */ = {
+		4356079F25C2C27C00DA98ED /* features */ = {
 			isa = PBXGroup;
 			children = (
 				432D5BC525C83454005BF279 /* home */,
@@ -271,7 +282,7 @@
 				432D5BC325C83441005BF279 /* order */,
 				4356079E25C2C27500DA98ED /* transfer */,
 			);
-			path = featureModule;
+			path = features;
 			sourceTree = "<group>";
 		};
 		435607A625C2C2E600DA98ED /* domain */ = {
@@ -280,6 +291,7 @@
 				436E458525C2FA570055BB97 /* account */,
 				436E458425C2FA4E0055BB97 /* balance */,
 				432D5BE325C8437B005BF279 /* transfer */,
+				434969E625CD30130076B376 /* ServiceLocator.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -287,6 +299,7 @@
 		435607A725C2C2EB00DA98ED /* res */ = {
 			isa = PBXGroup;
 			children = (
+				4303DB9F25CD4ED900D5C5B8 /* ArchitectureDescription.swift */,
 				4356076025C2AA5E00DA98ED /* Assets.xcassets */,
 				4356076225C2AA5E00DA98ED /* LaunchScreen.storyboard */,
 			);
@@ -296,7 +309,6 @@
 		435607B425C2DC1B00DA98ED /* amount */ = {
 			isa = PBXGroup;
 			children = (
-				436E45EF25C30E0F0055BB97 /* interactor */,
 				436E45F025C30E180055BB97 /* presenter */,
 				436E45F125C30E220055BB97 /* view */,
 			);
@@ -306,7 +318,6 @@
 		435607B525C2DC2300DA98ED /* summary */ = {
 			isa = PBXGroup;
 			children = (
-				432D5BCE25C83C7E005BF279 /* interactor */,
 				432D5BCC25C83C73005BF279 /* presenter */,
 				432D5BCD25C83C78005BF279 /* view */,
 			);
@@ -370,14 +381,6 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		436E45EF25C30E0F0055BB97 /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				436E45AC25C302F40055BB97 /* AmountInputInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
 		436E45F025C30E180055BB97 /* presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,8 +392,8 @@
 		436E45F125C30E220055BB97 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				4340A9D425CAEC2C007C95E0 /* model */,
 				4356075B25C2AA5D00DA98ED /* AmountInputView.swift */,
-				436E45F225C30E550055BB97 /* AmountInputViewState.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -544,20 +547,21 @@
 				432D5BA225C82711005BF279 /* Observable+Response.swift in Sources */,
 				436E458725C2FA610055BB97 /* AccountType.swift in Sources */,
 				4356075825C2AA5D00DA98ED /* AppDelegate.swift in Sources */,
+				4340A9D625CAEC39007C95E0 /* AmountInputBalanceViewModel.swift in Sources */,
 				4335472C25C40336003B67A3 /* ConstraintUtils.swift in Sources */,
 				432D5BB625C827EE005BF279 /* AmountData.swift in Sources */,
 				432D5BE525C84389005BF279 /* TransferService.swift in Sources */,
 				436E456F25C2F3D60055BB97 /* BaseWireframe.swift in Sources */,
 				436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */,
+				434969E725CD30130076B376 /* ServiceLocator.swift in Sources */,
 				4356078E25C2BE4C00DA98ED /* TransferWireframe.swift in Sources */,
-				432D5BDA25C83EB0005BF279 /* SummaryInteractor.swift in Sources */,
 				432D5BD525C83EA8005BF279 /* SummaryView.swift in Sources */,
 				432D5BD025C83C92005BF279 /* SummaryPresenter.swift in Sources */,
 				432D5BF825C86003005BF279 /* BalanceRequest.swift in Sources */,
 				432D5BDF25C83F93005BF279 /* SummaryViewState.swift in Sources */,
 				436E458F25C2FAC60055BB97 /* Balance.swift in Sources */,
+				4303DBA025CD4ED900D5C5B8 /* ArchitectureDescription.swift in Sources */,
 				436E45A825C302E90055BB97 /* AmountInputPresenter.swift in Sources */,
-				436E45AD25C302F40055BB97 /* AmountInputInteractor.swift in Sources */,
 				432D5BAE25C827E1005BF279 /* BalanceData.swift in Sources */,
 				436E459B25C2FD030055BB97 /* Money.swift in Sources */,
 				436E457D25C2FA200055BB97 /* BalanceService.swift in Sources */,

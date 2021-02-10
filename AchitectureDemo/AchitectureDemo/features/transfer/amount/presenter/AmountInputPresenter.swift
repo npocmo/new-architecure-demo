@@ -2,25 +2,31 @@ import Foundation
 import RxSwift
 
 protocol AmountInputPresenterProtocol {
-    func viewDidLoad()
+    func onViewDidLoad()
     func onNextButtonTouched(amount: String?)
 }
 
-class AmountInputPresenter {
-    weak var view: AmountInputViewProtocol?
-    var interactor: AmountInputInteractorProtocol?
-    
+class AmountInputPresenter: AmountInputPresenterProtocol {
+    private weak var view: AmountInputViewProtocol?
     private let nextHandler: ((Money) -> Void)?
+    private let balanceService: BalanceServiceProtocol?
     private let disposeBag = DisposeBag()
     
-    init(nextHandler: ((Money) -> Void)?) {
+    init(
+        view: AmountInputViewProtocol?,
+        balanceService: BalanceServiceProtocol? = serviceLocator.balanceService,
+        nextHandler: ((Money) -> Void)?
+    ) {
+        self.view = view
+        self.balanceService = balanceService
         self.nextHandler = nextHandler
     }
     
     // MARK: AmountInputPresenterProtocol
     
-    func viewDidLoad() {
-        interactor?.getBalance(for: .giro)
+    func onViewDidLoad() {
+        balanceService?.getBalance(for: .giro)
+            .map(mapToAmountInputBalanceViewModel)
             .subscribe(
                 onSuccess: { [weak self] balance in
                     self?.view?.updateView(viewState: .updateAvailableAmount(balance: balance))
@@ -38,5 +44,11 @@ class AmountInputPresenter {
         }
         let money = Money(value: amountAsDecimal, currency: Currency.init(iso: "EUR"))
         nextHandler?(money)
+    }
+    
+    // MARK: Mapping
+    
+    private func mapToAmountInputBalanceViewModel(balance: Balance) -> AmountInputBalanceViewModel {
+        return AmountInputBalanceViewModel(amount: balance.amount.value.description + " " +  balance.amount.currency.iso)
     }
 }

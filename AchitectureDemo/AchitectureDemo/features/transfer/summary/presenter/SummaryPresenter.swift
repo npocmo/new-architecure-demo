@@ -11,17 +11,23 @@ protocol SummaryPresenterProtocol {
     func viewDidLoad()
 }
 
-class SummaryPresenter {
-    weak var view: SummaryViewProtocol?
-    var interactor: SummaryInteractorProtocol?
+class SummaryPresenter: SummaryPresenterProtocol {
+    private weak var view: SummaryViewProtocol?
     
     private let nextHandler: (() -> Void)?
     private let disposeBag = DisposeBag()
-    
+    private let transferService: TransferServiceProtocol?
     private let model: TransferModel
     
-    init(model: TransferModel, nextHandler: (() -> Void)?) {
+    init(
+        view: SummaryViewProtocol?,
+        model: TransferModel,
+        transferService: TransferServiceProtocol? = serviceLocator.transferService,
+        nextHandler: (() -> Void)?
+    ) {
+        self.view = view
         self.model = model
+        self.transferService = transferService
         self.nextHandler = nextHandler
     }
     

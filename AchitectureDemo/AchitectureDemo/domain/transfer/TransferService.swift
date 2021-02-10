@@ -1,12 +1,18 @@
 import RxSwift
 import Foundation
 
-class TransferService {
-    static let instance = TransferService()
+protocol TransferServiceProtocol {
+    func validateTransfer(transferModel: TransferModel) -> Completable
+    func executeTransfer(transferModel: TransferModel) -> Completable
+}
+
+class TransferService: TransferServiceProtocol {
     
-    private let restSevice = RestService.instance
+    let restService: RestServiceProtocol
     
-    private init() { }
+    init(restService: RestServiceProtocol) {
+        self.restService = restService
+    }
     
     func validateTransfer(transferModel: TransferModel) -> Completable {
         return Completable.empty()

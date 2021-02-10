@@ -6,11 +6,12 @@ protocol BalanceServiceProtocol {
 }
 
 class BalanceService: BalanceServiceProtocol {
-    static let instance = BalanceService()
     
-    private let restSevice = RestService.instance
+    private let restSevice: RestServiceProtocol
     
-    private init() { }
+    init(restSevice: RestServiceProtocol) {
+        self.restSevice = restSevice
+    }
     
     func getBalance(for accountType: AccountType) -> Single<Balance> {
         return restSevice.request(BalanceRequest())

@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE945976-F500-40DF-A80C-A9C3A4335B01"
-            shouldBeEnabled = "Yes"
+            uuid = "2D097796-9CB4-40A1-AF2E-5B555FF3BDA5"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AchitectureDemo/featureModule/transfer/TransferWireframe.swift"
+            filePath = "AchitectureDemo/features/transfer/TransferWireframe.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "present()"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "pushSummary()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F19F4668-1740-4546-AB9A-DA37FB4E94A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AchitectureDemo/features/transfer/TransferWireframe.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "presentAmount()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

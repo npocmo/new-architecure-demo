@@ -6,7 +6,7 @@ protocol AmountInputViewProtocol: UIViewController {
 
 class AmountInputView: UIViewController, AmountInputViewProtocol {
     
-    var presenter: AmountInputPresenter?
+    var presenter: AmountInputPresenterProtocol?
     
     private var containerView = UIView()
     private var editTextFieldTitleLabel = UILabel()
@@ -20,7 +20,7 @@ class AmountInputView: UIViewController, AmountInputViewProtocol {
         super.viewDidLoad()
         initView()
         
-        presenter?.viewDidLoad()
+        presenter?.onViewDidLoad()
     }
     
     // MARK: - Init View
@@ -90,7 +90,7 @@ class AmountInputView: UIViewController, AmountInputViewProtocol {
             // TODO
             break
         case .updateAvailableAmount(balance: let balance):
-            availableAmountLabel.text = "Available amount: " + balance.amount.value.description + " " +  balance.amount.currency.iso
+            availableAmountLabel.text = "Available amount: " + balance.amount
         case .availableAmountFetchFailed:
             availableAmountLabel.text = "-"
         }
