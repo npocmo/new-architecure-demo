@@ -44,6 +44,7 @@
 		43AB107025E7CB01004DB1B8 /* SelectStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB106F25E7CB01004DB1B8 /* SelectStockView.swift */; };
 		43AB10A225E7CDD6004DB1B8 /* SelectStockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB10A125E7CDD6004DB1B8 /* SelectStockViewModel.swift */; };
 		43AB10A825E7CF73004DB1B8 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB10A725E7CF73004DB1B8 /* StockManager.swift */; };
+		43AB10B425E7DD37004DB1B8 /* Observablee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB10B325E7DD37004DB1B8 /* Observablee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		43AB106F25E7CB01004DB1B8 /* SelectStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStockView.swift; sourceTree = "<group>"; };
 		43AB10A125E7CDD6004DB1B8 /* SelectStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStockViewModel.swift; sourceTree = "<group>"; };
 		43AB10A725E7CF73004DB1B8 /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
+		43AB10B325E7DD37004DB1B8 /* Observablee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observablee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 				436E457B25C2F9F90055BB97 /* network */,
 				4335472A25C40325003B67A3 /* view */,
 				436E457A25C2F9F40055BB97 /* wireframe */,
+				43AB10B325E7DD37004DB1B8 /* Observablee.swift */,
 			);
 			path = infrastructure;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				4356075C25C2AA5D00DA98ED /* AmountInputView.swift in Sources */,
 				432D5BA225C82711005BF279 /* Observable+Response.swift in Sources */,
 				43AB10A225E7CDD6004DB1B8 /* SelectStockViewModel.swift in Sources */,
+				43AB10B425E7DD37004DB1B8 /* Observablee.swift in Sources */,
 				43AB106A25E7CA0C004DB1B8 /* OrderWireframe.swift in Sources */,
 				436E458725C2FA610055BB97 /* AccountType.swift in Sources */,
 				4356075825C2AA5D00DA98ED /* AppDelegate.swift in Sources */,

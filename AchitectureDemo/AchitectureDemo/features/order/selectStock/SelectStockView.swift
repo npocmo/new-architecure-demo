@@ -1,5 +1,4 @@
 import UIKit
-import RxSwift
 
 protocol SelectStockViewProtocol: UIViewController {
 }
@@ -11,8 +10,6 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
     private var containerView = UIView()
     private var tableView = UITableView()
     private var nextButton = UIButton()
-    
-    private let disposeBag = DisposeBag()
     
     // MARK: - Lifecycle
 
@@ -27,11 +24,10 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
     // MARK: - Bind
     
     private func bindToViewModel() {
-        viewModel?.stocks.subscribe(
-            onNext: { stocks in
-                self.tableView.reloadData()
-            }
-        ).disposed(by: disposeBag)
+        viewModel?.stocks.observe(on: self) { [weak self] stocks in
+            print(stocks)
+            self?.tableView.reloadData()
+        }
     }
     
     // MARK: - Init View

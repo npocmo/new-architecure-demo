@@ -1,5 +1,3 @@
-import RxSwift
-
 protocol StockViewModelProtocol {
     func viewDidLoad()
     func reload()
@@ -10,7 +8,7 @@ class SelectStockViewModel: StockViewModelProtocol {
     private let stockManager: StockManager
     private let nextHandler: ((String) -> Void)?
     
-    var stocks: Observable<[String]> = Observable.just([])
+    var stocks: Observablee<[String]> =  Observablee([])
     
     init(stockManager: StockManager, nextHandler: ((String) -> Void)?) {
         self.stockManager = stockManager
@@ -20,7 +18,7 @@ class SelectStockViewModel: StockViewModelProtocol {
     // MARK: StockViewModelProtocol
     
     func viewDidLoad() {
-        stocks = stockManager.getStocks()
+        stocks.value = stockManager.getStocks().value
     }
     
     func reload() {
