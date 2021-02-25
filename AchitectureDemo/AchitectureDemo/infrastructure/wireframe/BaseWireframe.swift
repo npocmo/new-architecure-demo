@@ -2,7 +2,7 @@ import UIKit
 
 class BaseWireframe {
     
-    private var navigationViewController: UINavigationController?
+    var navigationViewController: UINavigationController?
     
     func present(on entryPoint: UINavigationController, viewController: UIViewController, animated: Bool) {
         navigationViewController = UINavigationController(rootViewController: viewController)
@@ -22,5 +22,9 @@ class BaseWireframe {
     
     func pop(animated: Bool) {
         navigationViewController?.popViewController(animated: animated)
+    }
+    
+    func dismiss(animated: Bool) {
+        navigationViewController?.dismiss(animated: animated)
     }
 }

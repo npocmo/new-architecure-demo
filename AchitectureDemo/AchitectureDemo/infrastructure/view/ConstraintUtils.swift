@@ -69,4 +69,15 @@ open class ConstraintUtils {
         
         return constraint
     }
+    
+    @discardableResult
+    public static func setBottomToTopOfView(superView: UIView, view: UIView, bottomMargin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint: NSLayoutConstraint = view.bottomAnchor.constraint(equalTo: superView.topAnchor, constant: bottomMargin)
+        constraint.priority = priority
+        constraint.isActive = true
+        
+        return constraint
+    }
 }

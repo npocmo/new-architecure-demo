@@ -37,6 +37,13 @@
 		436E45A825C302E90055BB97 /* AmountInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45A725C302E90055BB97 /* AmountInputPresenter.swift */; };
 		436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45F225C30E550055BB97 /* AmountInputViewState.swift */; };
 		43994DB325D3E80C009D56BB /* AmountInputInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */; };
+		43AB105125E7C4E0004DB1B8 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105025E7C4E0004DB1B8 /* HomeWireframe.swift */; };
+		43AB105925E7C4F6004DB1B8 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105825E7C4F6004DB1B8 /* HomePresenter.swift */; };
+		43AB105E25E7C4FC004DB1B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105D25E7C4FC004DB1B8 /* HomeView.swift */; };
+		43AB106A25E7CA0C004DB1B8 /* OrderWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB106925E7CA0C004DB1B8 /* OrderWireframe.swift */; };
+		43AB107025E7CB01004DB1B8 /* SelectStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB106F25E7CB01004DB1B8 /* SelectStockView.swift */; };
+		43AB10A225E7CDD6004DB1B8 /* SelectStockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB10A125E7CDD6004DB1B8 /* SelectStockViewModel.swift */; };
+		43AB10A825E7CF73004DB1B8 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB10A725E7CF73004DB1B8 /* StockManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +99,13 @@
 		436E45A725C302E90055BB97 /* AmountInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputPresenter.swift; sourceTree = "<group>"; };
 		436E45F225C30E550055BB97 /* AmountInputViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputViewState.swift; sourceTree = "<group>"; };
 		43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputInteractor.swift; sourceTree = "<group>"; };
+		43AB105025E7C4E0004DB1B8 /* HomeWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
+		43AB105825E7C4F6004DB1B8 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		43AB105D25E7C4FC004DB1B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		43AB106925E7CA0C004DB1B8 /* OrderWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWireframe.swift; sourceTree = "<group>"; };
+		43AB106F25E7CB01004DB1B8 /* SelectStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStockView.swift; sourceTree = "<group>"; };
+		43AB10A125E7CDD6004DB1B8 /* SelectStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStockViewModel.swift; sourceTree = "<group>"; };
+		43AB10A725E7CF73004DB1B8 /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,20 +169,17 @@
 		432D5BC325C83441005BF279 /* order */ = {
 			isa = PBXGroup;
 			children = (
+				43AB106E25E7CABF004DB1B8 /* selectStock */,
+				43AB106925E7CA0C004DB1B8 /* OrderWireframe.swift */,
 			);
 			path = order;
-			sourceTree = "<group>";
-		};
-		432D5BC425C83448005BF279 /* onboarding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = onboarding;
 			sourceTree = "<group>";
 		};
 		432D5BC525C83454005BF279 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				43AB106225E7C506004DB1B8 /* home */,
+				43AB105025E7C4E0004DB1B8 /* HomeWireframe.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -280,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				432D5BC525C83454005BF279 /* home */,
-				432D5BC425C83448005BF279 /* onboarding */,
 				432D5BC325C83441005BF279 /* order */,
 				4356079E25C2C27500DA98ED /* transfer */,
 			);
@@ -292,6 +302,7 @@
 			children = (
 				436E458525C2FA570055BB97 /* account */,
 				436E458425C2FA4E0055BB97 /* balance */,
+				43AB10A625E7CF63004DB1B8 /* stock */,
 				432D5BE325C8437B005BF279 /* transfer */,
 				434969E625CD30130076B376 /* ServiceLocator.swift */,
 			);
@@ -407,6 +418,32 @@
 				43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */,
 			);
 			path = interactor;
+			sourceTree = "<group>";
+		};
+		43AB106225E7C506004DB1B8 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				43AB105D25E7C4FC004DB1B8 /* HomeView.swift */,
+				43AB105825E7C4F6004DB1B8 /* HomePresenter.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		43AB106E25E7CABF004DB1B8 /* selectStock */ = {
+			isa = PBXGroup;
+			children = (
+				43AB106F25E7CB01004DB1B8 /* SelectStockView.swift */,
+				43AB10A125E7CDD6004DB1B8 /* SelectStockViewModel.swift */,
+			);
+			path = selectStock;
+			sourceTree = "<group>";
+		};
+		43AB10A625E7CF63004DB1B8 /* stock */ = {
+			isa = PBXGroup;
+			children = (
+				43AB10A725E7CF73004DB1B8 /* StockManager.swift */,
+			);
+			path = stock;
 			sourceTree = "<group>";
 		};
 		43AF6EEF25C9AE2800B2595E /* model */ = {
@@ -553,14 +590,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				436E45A025C2FD5E0055BB97 /* Currency.swift in Sources */,
+				43AB105E25E7C4FC004DB1B8 /* HomeView.swift in Sources */,
 				432D5B5925C80011005BF279 /* RestService.swift in Sources */,
 				4356075C25C2AA5D00DA98ED /* AmountInputView.swift in Sources */,
 				432D5BA225C82711005BF279 /* Observable+Response.swift in Sources */,
+				43AB10A225E7CDD6004DB1B8 /* SelectStockViewModel.swift in Sources */,
+				43AB106A25E7CA0C004DB1B8 /* OrderWireframe.swift in Sources */,
 				436E458725C2FA610055BB97 /* AccountType.swift in Sources */,
 				4356075825C2AA5D00DA98ED /* AppDelegate.swift in Sources */,
 				4340A9D625CAEC39007C95E0 /* AmountInputBalanceViewModel.swift in Sources */,
 				4335472C25C40336003B67A3 /* ConstraintUtils.swift in Sources */,
 				432D5BB625C827EE005BF279 /* AmountData.swift in Sources */,
+				43AB10A825E7CF73004DB1B8 /* StockManager.swift in Sources */,
 				432D5BE525C84389005BF279 /* TransferService.swift in Sources */,
 				436E456F25C2F3D60055BB97 /* BaseWireframe.swift in Sources */,
 				436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */,
@@ -569,12 +610,15 @@
 				432D5BD525C83EA8005BF279 /* SummaryView.swift in Sources */,
 				43994DB325D3E80C009D56BB /* AmountInputInteractor.swift in Sources */,
 				432D5BD025C83C92005BF279 /* SummaryPresenter.swift in Sources */,
+				43AB105125E7C4E0004DB1B8 /* HomeWireframe.swift in Sources */,
 				432D5BF825C86003005BF279 /* BalanceRequest.swift in Sources */,
 				432D5BDF25C83F93005BF279 /* SummaryViewState.swift in Sources */,
 				436E458F25C2FAC60055BB97 /* Balance.swift in Sources */,
 				4303DBA025CD4ED900D5C5B8 /* ArchitectureDescription.swift in Sources */,
 				436E45A825C302E90055BB97 /* AmountInputPresenter.swift in Sources */,
 				432D5BAE25C827E1005BF279 /* BalanceData.swift in Sources */,
+				43AB105925E7C4F6004DB1B8 /* HomePresenter.swift in Sources */,
+				43AB107025E7CB01004DB1B8 /* SelectStockView.swift in Sources */,
 				436E459B25C2FD030055BB97 /* Money.swift in Sources */,
 				436E457D25C2FA200055BB97 /* BalanceService.swift in Sources */,
 			);

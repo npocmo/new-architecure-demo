@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func showTransferWireframe() {
         guard let navigationController = navigationController else { return }
         
-        let wireframe = TransferWireframe(entryPoint: navigationController, completionHandler: nil)
+        let wireframe = HomeWireframe(entryPoint: navigationController, completionHandler: nil)
         wireframe.present()
     }
 }

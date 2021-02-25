@@ -78,6 +78,8 @@ class AmountInputView: UIViewController, AmountInputViewProtocol {
         nextButton.addTarget(self, action: #selector(handleNextButtonClick), for: .touchUpInside)
     }
     
+    // MARK: Actions
+    
     @objc func handleNextButtonClick(sender: UIButton) {
         presenter?.onNextButtonTouched(amount: editTextField.text!)
     }

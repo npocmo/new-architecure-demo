@@ -48,7 +48,7 @@ class TransferWireframe: BaseWireframe {
             view: summaryView,
             model: transferModel,
             nextHandler: {
-                //self.pop(animated: true)
+                self.dismiss(animated: true)
             }
         )
         
