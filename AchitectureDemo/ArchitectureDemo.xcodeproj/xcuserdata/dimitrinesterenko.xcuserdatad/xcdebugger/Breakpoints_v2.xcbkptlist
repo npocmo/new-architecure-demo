@@ -14,9 +14,9 @@
             filePath = "AchitectureDemo/features/transfer/TransferWireframe.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "pushSummary(view:)"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "pushSummary()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

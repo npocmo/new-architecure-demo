@@ -7,15 +7,14 @@ struct TransferWireframeFlowModel {
 }
 
 class TransferWireframe: BaseWireframe {
-    private let entryPoint: UIViewController
+    private let entryPoint: UINavigationController
     private let completionHandler: (() -> Void)?
-    private var flowModel = TransferWireframeFlowModel()
     
-    private var navigationViewController: UINavigationController?
+    private var flowModel = TransferWireframeFlowModel()
     
     // MARK: - Flow
     
-    init(entryPoint: UIViewController, completionHandler: (() -> Void)?) {
+    init(entryPoint: UINavigationController, completionHandler: (() -> Void)?) {
         self.entryPoint = entryPoint
         self.completionHandler = completionHandler
     }
@@ -32,18 +31,16 @@ class TransferWireframe: BaseWireframe {
             interactor: interactor,
             nextHandler: { result in
                 self.flowModel.amount = result
-                self.pushSummary(view: view)
+                self.pushSummary()
             }
         )
         
         view.presenter = presenter
         
-        self.navigationViewController = UINavigationController(rootViewController: view)
-        
-        entryPoint.present(navigationViewController!, animated: true, completion: nil)
+        present(on: entryPoint, viewController: view, animated: true)
     }
     
-    private func pushSummary(view: UIViewController) {
+    private func pushSummary() {
         let transferModel = TransferModel(sourceIban: "DE12500105170648489890", targetIban: "DE12500105170648489890", amount: flowModel.amount!)
         
         let summaryView = SummaryView()
@@ -51,13 +48,12 @@ class TransferWireframe: BaseWireframe {
             view: summaryView,
             model: transferModel,
             nextHandler: {
-                // for testing
-                self.navigationViewController?.popViewController(animated: true)
+                //self.pop(animated: true)
             }
         )
         
         summaryView.presenter = presenter
         
-        navigationViewController?.pushViewController(summaryView, animated: true)
+        push(viewController: summaryView, animated: true)
     }
 }
