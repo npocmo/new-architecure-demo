@@ -24,6 +24,8 @@ class OrderWireframe: BaseWireframe {
     private func presentSelectStock() {
         let viewModel = SelectStockViewModel(
             stockManager: StockManager(),
+            balanceManager: BalanceManager(),
+            depoManager: DepoManager(),
             nextHandler: { stockId in
                 self.flowModel.stockId = stockId
                 self.pushSelectStockAmount()

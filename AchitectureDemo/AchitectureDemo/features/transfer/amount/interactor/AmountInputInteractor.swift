@@ -8,7 +8,7 @@ class AmountInputInteractor: AmountInputInteractorProtocol {
     
     private let balanceService: BalanceServiceProtocol
     
-    init(balanceService: BalanceServiceProtocol = ServiceLocator.instance.balanceService) {
+    init(balanceService: BalanceServiceProtocol) {
         self.balanceService = balanceService
     }
     

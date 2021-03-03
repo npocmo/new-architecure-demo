@@ -80,4 +80,38 @@ open class ConstraintUtils {
         
         return constraint
     }
+    
+    // MARK: - Height
+    
+    @discardableResult
+    public static func setHeightEqual(view: UIView, height: CGFloat) -> NSLayoutConstraint {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint: NSLayoutConstraint = view.heightAnchor.constraint(equalToConstant: height)
+        constraint.isActive = true
+        
+        return constraint
+    }
+    
+    // MARK: - Center
+    
+    @discardableResult
+    public static func setCenterXToView(superView: UIView, view: UIView) -> NSLayoutConstraint {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint: NSLayoutConstraint = view.centerXAnchor.constraint(equalTo: superView.centerXAnchor)
+        constraint.isActive = true
+        
+        return constraint
+    }
+    
+    @discardableResult
+    public static func setCenterYToView(superView: UIView, view: UIView) -> NSLayoutConstraint {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint: NSLayoutConstraint = view.centerYAnchor.constraint(equalTo: superView.centerYAnchor)
+        constraint.isActive = true
+        
+        return constraint
+    }
 }

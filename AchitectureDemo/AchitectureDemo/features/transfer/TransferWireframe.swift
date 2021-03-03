@@ -25,7 +25,9 @@ class TransferWireframe: BaseWireframe {
     
     private func presentAmount() {
         let view = AmountInputView()
-        let interactor = AmountInputInteractor()
+        let interactor = AmountInputInteractor(
+            balanceService: ServiceLocator.instance.balanceService
+        )
         let presenter = AmountInputPresenter(
             view: view,
             interactor: interactor,

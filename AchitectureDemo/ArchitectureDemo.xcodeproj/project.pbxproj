@@ -38,6 +38,8 @@
 		436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45F225C30E550055BB97 /* AmountInputViewState.swift */; };
 		43794A7925EE3BAF0017F64C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 43794A7825EE3BAF0017F64C /* RxCocoa */; };
 		43794A7B25EE3BAF0017F64C /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 43794A7A25EE3BAF0017F64C /* RxRelay */; };
+		43892F4A25EFE23000D29BE0 /* BalanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43892F4925EFE23000D29BE0 /* BalanceManager.swift */; };
+		43892F5025EFE2DB00D29BE0 /* DepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43892F4F25EFE2DB00D29BE0 /* DepoManager.swift */; };
 		43994DB325D3E80C009D56BB /* AmountInputInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */; };
 		43AB105125E7C4E0004DB1B8 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105025E7C4E0004DB1B8 /* HomeWireframe.swift */; };
 		43AB105925E7C4F6004DB1B8 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105825E7C4F6004DB1B8 /* HomePresenter.swift */; };
@@ -100,6 +102,8 @@
 		436E459F25C2FD5E0055BB97 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		436E45A725C302E90055BB97 /* AmountInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputPresenter.swift; sourceTree = "<group>"; };
 		436E45F225C30E550055BB97 /* AmountInputViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputViewState.swift; sourceTree = "<group>"; };
+		43892F4925EFE23000D29BE0 /* BalanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceManager.swift; sourceTree = "<group>"; };
+		43892F4F25EFE2DB00D29BE0 /* DepoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepoManager.swift; sourceTree = "<group>"; };
 		43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputInteractor.swift; sourceTree = "<group>"; };
 		43AB105025E7C4E0004DB1B8 /* HomeWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
 		43AB105825E7C4F6004DB1B8 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				435607A625C2C2E600DA98ED /* domain */,
+				434969E625CD30130076B376 /* ServiceLocator.swift */,
 				436E457625C2F9CD0055BB97 /* infrastructure */,
 				4356079F25C2C27C00DA98ED /* features */,
 				435607A725C2C2EB00DA98ED /* res */,
@@ -307,9 +312,9 @@
 			children = (
 				436E458525C2FA570055BB97 /* account */,
 				436E458425C2FA4E0055BB97 /* balance */,
+				43892F4E25EFE2A800D29BE0 /* depo */,
 				43AB10A625E7CF63004DB1B8 /* stock */,
 				432D5BE325C8437B005BF279 /* transfer */,
-				434969E625CD30130076B376 /* ServiceLocator.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				432D5B5425C7F981005BF279 /* service_model */,
 				432D5BF725C86003005BF279 /* BalanceRequest.swift */,
 				436E457C25C2FA200055BB97 /* BalanceService.swift */,
+				43892F4925EFE23000D29BE0 /* BalanceManager.swift */,
 			);
 			path = balance;
 			sourceTree = "<group>";
@@ -422,6 +428,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43892F4E25EFE2A800D29BE0 /* depo */ = {
+			isa = PBXGroup;
+			children = (
+				43892F4F25EFE2DB00D29BE0 /* DepoManager.swift */,
+			);
+			path = depo;
 			sourceTree = "<group>";
 		};
 		43994DB125D3E7F9009D56BB /* interactor */ = {
@@ -619,6 +633,8 @@
 				432D5BE525C84389005BF279 /* TransferService.swift in Sources */,
 				436E456F25C2F3D60055BB97 /* BaseWireframe.swift in Sources */,
 				436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */,
+				43892F4A25EFE23000D29BE0 /* BalanceManager.swift in Sources */,
+				43892F5025EFE2DB00D29BE0 /* DepoManager.swift in Sources */,
 				434969E725CD30130076B376 /* ServiceLocator.swift in Sources */,
 				4356078E25C2BE4C00DA98ED /* TransferWireframe.swift in Sources */,
 				432D5BD525C83EA8005BF279 /* SummaryView.swift in Sources */,
