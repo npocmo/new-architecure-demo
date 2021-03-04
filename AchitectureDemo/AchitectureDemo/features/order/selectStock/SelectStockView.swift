@@ -1,6 +1,5 @@
 import UIKit
 import RxSwift
-import RxCocoa
 import RxDataSources
 
 protocol SelectStockViewProtocol: UIViewController {
@@ -8,10 +7,8 @@ protocol SelectStockViewProtocol: UIViewController {
 
 class SelectStockView: UIViewController, SelectStockViewProtocol {
         
-    var viewModel: SelectStockViewModel?
-    
-    private var selectedStock = ""
-    
+    var viewModel: SelectStockViewModelProtocol?
+        
     private var containerView = UIView()
     private var titleLabel = UILabel()
     private var tableView = UITableView()
@@ -20,6 +17,7 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
     private var refreshButton = UIButton()
     private var nextButton = UIButton()
     
+    private var selectedStock = ""
     private let disposeBag = DisposeBag()
     
     // MARK: Lifecycle
@@ -31,31 +29,39 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
         bindTableClick()
         bindGiroBalanceData()
         bindDepoBalanceData()
+        bindRefreshButton()
+        bindNextButton()
         
         viewModel?.viewDidLoad()
     }
     
-    // MARK: - Bind
+    // MARK: - Bind Data
     
     private func bindTableData() {
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, String>>(
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, SelectStockTableCellModel>>(
             configureCell: { dataSource, tableView, indexPath, item in
+                var cellText = ""
+                switch item {
+                case .idle:
+                    cellText = ""
+                case .empty:
+                    cellText = "No data to show"
+                case .loading:
+                    cellText = "Data is loading..."
+                case .error(error: let error):
+                    cellText = "Got error while loading data: \(error)"
+                case .dataAvailable(let stock):
+                    cellText = stock
+                }
               let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-              cell.textLabel?.text = item
+              cell.textLabel?.text = cellText
               return cell
             }
         )
         
         viewModel?.stocks
             .map { selectStockCellModel in
-                switch selectStockCellModel {
-                case .loading:
-                    return [SectionModel(model: "loading", items: [])]
-                case .idle, .error, .empty:
-                    return [SectionModel(model: "test", items: [])]
-                case .dataAvailable(let stocks):
-                    return [SectionModel(model: "test", items: stocks)]
-                }
+                return [SectionModel(model: "SectionName", items: selectStockCellModel ?? [])]
             }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -65,7 +71,6 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 let cell = self?.tableView.cellForRow(at: indexPath)
-                cell?.isSelected = true
                 self?.selectedStock = cell?.textLabel?.text ?? ""
             })
             .disposed(by: disposeBag)
@@ -91,6 +96,18 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
             }
             .bind(to: depoBalanceLabel.rx.attributedText)
             .disposed(by: disposeBag)
+    }
+    
+    private func bindNextButton() {
+        nextButton.rx.tap.bind { [weak self] in
+            self?.viewModel?.onNextButtonTouched(stockId: self?.selectedStock)
+        }.disposed(by: disposeBag)
+    }
+    
+    private func bindRefreshButton() {
+        refreshButton.rx.tap.bind { [weak self] in
+            self?.viewModel?.onRefreshButtonTouched()
+        }.disposed(by: disposeBag)
     }
     
     // MARK: Init View
@@ -156,8 +173,6 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
         
         refreshButton.setTitle("Refresh Stocks", for: .normal)
         refreshButton.setTitleColor(.black, for: .normal)
-        
-        refreshButton.addTarget(self, action: #selector(handleRefreshButtonClick), for: .touchUpInside)
     }
     
     private func initNextButton() {
@@ -169,17 +184,5 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
         
         nextButton.setTitle("Next", for: .normal)
         nextButton.setTitleColor(.black, for: .normal)
-        
-        nextButton.addTarget(self, action: #selector(handleNextButtonClick), for: .touchUpInside)
-    }
-    
-    // MARK: Actions
-    
-    @objc func handleRefreshButtonClick(sender: UIButton) {
-        viewModel?.onRefreshButtonTouched()
-    }
-    
-    @objc func handleNextButtonClick(sender: UIButton) {
-        viewModel?.onNextButtonTouched(stockId: selectedStock)
     }
 }

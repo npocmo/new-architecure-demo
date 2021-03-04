@@ -7,21 +7,21 @@ protocol SelectStockViewModelProtocol: SelectStockViewModelProtocolInput, Select
 protocol SelectStockViewModelProtocolInput {
     func viewDidLoad()
     func onRefreshButtonTouched()
-    func onNextButtonTouched(stockId: String)
+    func onNextButtonTouched(stockId: String?)
 }
 
 protocol SelectStockViewModelProtocolOutput {
-    var stocks: BehaviorSubject<SelectStockTableModel> { get }
+    var stocks: BehaviorSubject<[SelectStockTableCellModel]?> { get }
     var giroBalance: BehaviorSubject<String?> { get }
     var depoBalance: BehaviorSubject<String?> { get }
 }
 
-enum SelectStockTableModel {
+enum SelectStockTableCellModel {
     case idle
     case loading
     case empty
     case error(error: Error)
-    case dataAvailable(stocks: [String])
+    case dataAvailable(stock: String)
 }
 
 class SelectStockViewModel: SelectStockViewModelProtocol {
@@ -34,7 +34,7 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
     // MARK: SelectStockViewModelProtocolOutput
     
     // TODO: stocks should maybe be an enum with idle, loading and dataAvailable state
-    var stocks = BehaviorSubject<SelectStockTableModel>(value: SelectStockTableModel.idle)
+    var stocks = BehaviorSubject<[SelectStockTableCellModel]?>(value: nil)
     var giroBalance = BehaviorSubject<String?>(value: nil)
     var depoBalance = BehaviorSubject<String?>(value: nil)
     
@@ -50,24 +50,35 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
     // MARK: Managers
     
     func fetchStocks() {
-        // loading state
-        stocks.onNext(SelectStockTableModel.loading)
+        stocks.onNext([SelectStockTableCellModel.loading])
         
         stockManager.getStocks(
             completionHandler: { [weak self] result in
-                switch result {
-                case .success(let value):
-                    if value.isEmpty {
-                        self?.stocks.onNext(SelectStockTableModel.empty)
-                        return
-                    }
-                    
-                    self?.stocks.onNext(SelectStockTableModel.dataAvailable(stocks: value))
-                case .failure(let error):
-                    self?.stocks.onNext(SelectStockTableModel.error(error: error))
-                }
+                self?.createStocksModel(result)
             }
         )
+    }
+    
+    private func createStocksModel(_ result: Result<[String], Error>) {
+        switch result {
+        case .success(let value):
+            if value.isEmpty {
+                stocks.onNext([SelectStockTableCellModel.empty])
+                return
+            }
+            
+            stocks.onNext(createStocksDataAvailableArray(value))
+        case .failure(let error):
+            stocks.onNext([SelectStockTableCellModel.error(error: error)])
+        }
+    }
+    
+    private func createStocksDataAvailableArray(_ stocks: [String]) -> [SelectStockTableCellModel] {
+        var result = [SelectStockTableCellModel]()
+        for stock in stocks {
+            result.append(SelectStockTableCellModel.dataAvailable(stock: stock))
+        }
+        return result
     }
     
     func fetchDepoBalance() {
@@ -75,7 +86,7 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
             completionHandler: { [weak self] result in
                 switch result {
                 case .success(let value):
-                    let depoBalanceString = self?.mapBalanceToString(value)
+                    let depoBalanceString = self?.toBalanceString(value)
                     self?.depoBalance.onNext(depoBalanceString)
                 case .failure(let error):
                     self?.depoBalance.onError(error)
@@ -89,7 +100,7 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
             completionHandler: { [weak self] result in
                 switch result {
                 case .success(let value):
-                    let giroBalanceString = self?.mapBalanceToString(value)
+                    let giroBalanceString = self?.toBalanceString(value)
                     self?.giroBalance.onNext(giroBalanceString)
                 case .failure(let error):
                     self?.giroBalance.onError(error)
@@ -110,19 +121,14 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
         fetchStocks()
     }
     
-    func onNextButtonTouched(stockId: String) {
+    func onNextButtonTouched(stockId: String?) {
+        guard let stockId = stockId else { return }
         nextHandler?(stockId)
     }
     
     // MARK: Mapping
     
-    private func mapBalanceToString(_ balance: Balance) -> String {
+    private func toBalanceString(_ balance: Balance) -> String {
         return String(balance.amount.value.description) + " " + String(balance.amount.currency.iso)
-    }
-    
-    // MARK: Error Handling
-    
-    private func handle(_ error: Error) {
-        print(error)
     }
 }
