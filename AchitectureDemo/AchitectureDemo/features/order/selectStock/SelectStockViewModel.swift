@@ -33,7 +33,6 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
     
     // MARK: SelectStockViewModelProtocolOutput
     
-    // TODO: stocks should maybe be an enum with idle, loading and dataAvailable state
     var stocks = BehaviorSubject<[SelectStockTableCellModel]?>(value: nil)
     var giroBalance = BehaviorSubject<String?>(value: nil)
     var depoBalance = BehaviorSubject<String?>(value: nil)
