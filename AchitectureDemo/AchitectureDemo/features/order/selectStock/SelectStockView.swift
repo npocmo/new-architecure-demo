@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 protocol SelectStockViewProtocol: UIViewController {
 }
@@ -37,14 +38,26 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
     // MARK: - Bind
     
     private func bindTableData() {
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, String>>(
+            configureCell: { dataSource, tableView, indexPath, item in
+              let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+              cell.textLabel?.text = item
+              return cell
+            }
+        )
+        
         viewModel?.stocks
-            .compactMap {$0}
-            .bind(
-                to: tableView.rx.items(cellIdentifier: "UITableViewCell", cellType: UITableViewCell.self),
-                curriedArgument: { (row, stock, cell) in
-                    cell.textLabel?.text = stock
+            .map { selectStockCellModel in
+                switch selectStockCellModel {
+                case .loading:
+                    return [SectionModel(model: "loading", items: [])]
+                case .idle, .error, .empty:
+                    return [SectionModel(model: "test", items: [])]
+                case .dataAvailable(let stocks):
+                    return [SectionModel(model: "test", items: stocks)]
                 }
-            )
+            }
+            .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
     
@@ -116,10 +129,6 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
         ConstraintUtils.setTopToBottomOfView(superView: titleLabel, view: tableView, topMargin: 40)
         ConstraintUtils.setLeadingAndTrailingToSuperView(superView: containerView, view: tableView, leftMargin: 20, rigthMargin: 20)
         
-        tableView.delegate = nil
-        tableView.dataSource = nil
-        
-        tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
     }
     

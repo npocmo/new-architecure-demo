@@ -37,10 +37,10 @@
 		436E45A825C302E90055BB97 /* AmountInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45A725C302E90055BB97 /* AmountInputPresenter.swift */; };
 		436E45F325C30E550055BB97 /* AmountInputViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E45F225C30E550055BB97 /* AmountInputViewState.swift */; };
 		43794A7925EE3BAF0017F64C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 43794A7825EE3BAF0017F64C /* RxCocoa */; };
-		43794A7B25EE3BAF0017F64C /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 43794A7A25EE3BAF0017F64C /* RxRelay */; };
 		43892F4A25EFE23000D29BE0 /* BalanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43892F4925EFE23000D29BE0 /* BalanceManager.swift */; };
 		43892F5025EFE2DB00D29BE0 /* DepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43892F4F25EFE2DB00D29BE0 /* DepoManager.swift */; };
 		43994DB325D3E80C009D56BB /* AmountInputInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43994DB225D3E80C009D56BB /* AmountInputInteractor.swift */; };
+		43A575A325F0E0A700482EF0 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 43A575A225F0E0A700482EF0 /* RxDataSources */; };
 		43AB105125E7C4E0004DB1B8 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105025E7C4E0004DB1B8 /* HomeWireframe.swift */; };
 		43AB105925E7C4F6004DB1B8 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105825E7C4F6004DB1B8 /* HomePresenter.swift */; };
 		43AB105E25E7C4FC004DB1B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105D25E7C4FC004DB1B8 /* HomeView.swift */; };
@@ -119,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43794A7B25EE3BAF0017F64C /* RxRelay in Frameworks */,
+				43A575A325F0E0A700482EF0 /* RxDataSources in Frameworks */,
 				43794A7925EE3BAF0017F64C /* RxCocoa in Frameworks */,
 				436E459525C2FCCC0055BB97 /* RxSwift in Frameworks */,
 			);
@@ -499,7 +499,7 @@
 			packageProductDependencies = (
 				436E459425C2FCCC0055BB97 /* RxSwift */,
 				43794A7825EE3BAF0017F64C /* RxCocoa */,
-				43794A7A25EE3BAF0017F64C /* RxRelay */,
+				43A575A225F0E0A700482EF0 /* RxDataSources */,
 			);
 			productName = AchitectureDemo;
 			productReference = 4356075425C2AA5D00DA98ED /* ArchitectureDemo.app */;
@@ -574,6 +574,7 @@
 			mainGroup = 4356074B25C2AA5D00DA98ED;
 			packageReferences = (
 				436E459325C2FCCC0055BB97 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				43A575A125F0E0A700482EF0 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 4356075525C2AA5D00DA98ED /* Products */;
 			projectDirPath = "";
@@ -985,6 +986,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		43A575A125F0E0A700482EF0 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -998,10 +1007,10 @@
 			package = 436E459325C2FCCC0055BB97 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		43794A7A25EE3BAF0017F64C /* RxRelay */ = {
+		43A575A225F0E0A700482EF0 /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 436E459325C2FCCC0055BB97 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
+			package = 43A575A125F0E0A700482EF0 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

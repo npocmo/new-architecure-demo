@@ -1,31 +1,40 @@
 import Foundation
 import RxSwift
+import RxDataSources
 
-protocol StockViewModelProtocol: StockViewModelProtocolInput, StockViewModelProtocolOutput {}
+protocol SelectStockViewModelProtocol: SelectStockViewModelProtocolInput, SelectStockViewModelProtocolOutput {}
 
-protocol StockViewModelProtocolInput {
+protocol SelectStockViewModelProtocolInput {
     func viewDidLoad()
     func onRefreshButtonTouched()
     func onNextButtonTouched(stockId: String)
 }
 
-protocol StockViewModelProtocolOutput {
-    var stocks: BehaviorSubject<[String]?> { get }
+protocol SelectStockViewModelProtocolOutput {
+    var stocks: BehaviorSubject<SelectStockTableModel> { get }
     var giroBalance: BehaviorSubject<String?> { get }
     var depoBalance: BehaviorSubject<String?> { get }
 }
 
-class SelectStockViewModel: StockViewModelProtocol {
+enum SelectStockTableModel {
+    case idle
+    case loading
+    case empty
+    case error(error: Error)
+    case dataAvailable(stocks: [String])
+}
+
+class SelectStockViewModel: SelectStockViewModelProtocol {
     
     private let stockManager: StockManager
     private let balanceManager: BalanceManager
     private let depoManager: DepoManager
     private let nextHandler: ((String) -> Void)?
     
-    // MARK: StockViewModelProtocolOutput
+    // MARK: SelectStockViewModelProtocolOutput
     
     // TODO: stocks should maybe be an enum with idle, loading and dataAvailable state
-    var stocks = BehaviorSubject<[String]?>(value: nil)
+    var stocks = BehaviorSubject<SelectStockTableModel>(value: SelectStockTableModel.idle)
     var giroBalance = BehaviorSubject<String?>(value: nil)
     var depoBalance = BehaviorSubject<String?>(value: nil)
     
@@ -42,15 +51,20 @@ class SelectStockViewModel: StockViewModelProtocol {
     
     func fetchStocks() {
         // loading state
-        stocks.onNext(nil)
+        stocks.onNext(SelectStockTableModel.loading)
         
         stockManager.getStocks(
             completionHandler: { [weak self] result in
                 switch result {
                 case .success(let value):
-                    self?.stocks.onNext(value)
+                    if value.isEmpty {
+                        self?.stocks.onNext(SelectStockTableModel.empty)
+                        return
+                    }
+                    
+                    self?.stocks.onNext(SelectStockTableModel.dataAvailable(stocks: value))
                 case .failure(let error):
-                    self?.stocks.onError(error)
+                    self?.stocks.onNext(SelectStockTableModel.error(error: error))
                 }
             }
         )
@@ -84,7 +98,7 @@ class SelectStockViewModel: StockViewModelProtocol {
         )
     }
     
-    // MARK: StockViewModelProtocolInput
+    // MARK: SelectStockViewModelProtocolInput
     
     func viewDidLoad() {
         fetchStocks()
