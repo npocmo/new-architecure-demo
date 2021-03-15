@@ -1,4 +1,5 @@
 import UIKit
+import SampleFramework
 
 public let serviceLocator = ServiceLocator.instance
 
@@ -30,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func showTransferWireframe() {
         guard let navigationController = navigationController else { return }
         
-        let wireframe = HomeWireframe(entryPoint: navigationController, completionHandler: nil)
+        let wireframe = HomeWireframe(entryPoint: navigationController, completionHandler: nil, serviceLocator: serviceLocator)
         wireframe.present()
     }
 }

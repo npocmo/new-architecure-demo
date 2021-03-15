@@ -10,18 +10,16 @@ class AmountInputPresenter: AmountInputPresenterProtocol {
     private weak var view: AmountInputViewProtocol?
     private var interactor: AmountInputInteractorProtocol?
     private let nextHandler: ((Money) -> Void)?
-    private let balanceService: BalanceServiceProtocol?
     private let disposeBag = DisposeBag()
     
     init(
         view: AmountInputViewProtocol?,
         interactor: AmountInputInteractorProtocol?,
-        balanceService: BalanceServiceProtocol? = serviceLocator.balanceService,
+        balanceService: BalanceServiceProtocol?,
         nextHandler: ((Money) -> Void)?
     ) {
         self.view = view
         self.interactor = interactor
-        self.balanceService = balanceService
         self.nextHandler = nextHandler
     }
     

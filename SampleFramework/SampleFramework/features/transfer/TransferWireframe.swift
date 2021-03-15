@@ -9,14 +9,16 @@ struct TransferWireframeFlowModel {
 class TransferWireframe: BaseWireframe {
     private let entryPoint: UINavigationController
     private let completionHandler: (() -> Void)?
+    private let serviceLocator: ServiceLocator
     
     private var flowModel = TransferWireframeFlowModel()
     
     // MARK: - Flow
     
-    init(entryPoint: UINavigationController, completionHandler: (() -> Void)?) {
+    init(entryPoint: UINavigationController, completionHandler: (() -> Void)?, serviceLocator: ServiceLocator) {
         self.entryPoint = entryPoint
         self.completionHandler = completionHandler
+        self.serviceLocator = serviceLocator
     }
     
     func present() {
@@ -26,11 +28,12 @@ class TransferWireframe: BaseWireframe {
     private func presentAmount() {
         let view = AmountInputView()
         let interactor = AmountInputInteractor(
-            balanceService: ServiceLocator.instance.balanceService
+            balanceService: serviceLocator.balanceService
         )
         let presenter = AmountInputPresenter(
             view: view,
             interactor: interactor,
+            balanceService: serviceLocator.balanceService,
             nextHandler: { result in
                 self.flowModel.amount = result
                 self.pushSummary()
@@ -49,6 +52,7 @@ class TransferWireframe: BaseWireframe {
         let presenter = SummaryPresenter(
             view: summaryView,
             model: transferModel,
+            transferService: serviceLocator.transferService,
             nextHandler: {
                 self.dismiss(animated: true)
             }

@@ -1,19 +1,21 @@
 import UIKit
 
-class HomeWireframe: BaseWireframe {
+public class HomeWireframe: BaseWireframe {
     private let entryPoint: UINavigationController
     private let completionHandler: (() -> Void)?
+    private let serviceLocator: ServiceLocator
     
     private var flowModel = TransferWireframeFlowModel()
     
     // MARK: - Flow
     
-    init(entryPoint: UINavigationController, completionHandler: (() -> Void)?) {
+    public init(entryPoint: UINavigationController, completionHandler: (() -> Void)?, serviceLocator: ServiceLocator) {
         self.entryPoint = entryPoint
         self.completionHandler = completionHandler
+        self.serviceLocator = serviceLocator
     }
     
-    func present() {
+    public func present() {
         presentHome()
     }
     
@@ -37,7 +39,11 @@ class HomeWireframe: BaseWireframe {
     private func presentTransfer() {
         guard let navigationViewController = navigationViewController else { return }
         
-        let wireframe = TransferWireframe(entryPoint: navigationViewController, completionHandler: nil)
+        let wireframe = TransferWireframe(
+            entryPoint: navigationViewController,
+            completionHandler: nil,
+            serviceLocator: serviceLocator
+        )
         wireframe.present()
     }
     

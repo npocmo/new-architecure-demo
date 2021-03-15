@@ -22,7 +22,7 @@ class SummaryPresenter: SummaryPresenterProtocol {
     init(
         view: SummaryViewProtocol?,
         model: TransferModel,
-        transferService: TransferServiceProtocol? = serviceLocator.transferService,
+        transferService: TransferServiceProtocol?,
         nextHandler: (() -> Void)?
     ) {
         self.view = view

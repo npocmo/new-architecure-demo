@@ -1,6 +1,6 @@
 import UIKit
 
-class BaseWireframe {
+public class BaseWireframe {
     
     var navigationViewController: UINavigationController?
     

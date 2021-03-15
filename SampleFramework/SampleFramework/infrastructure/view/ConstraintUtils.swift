@@ -2,7 +2,7 @@ import UIKit
 
 infix operator ??? : ComparisonPrecedence
 extension Array where Element: Equatable {
-    public static func ???(lhs: Element, rhs: Array) -> Bool {
+    static func ???(lhs: Element, rhs: Array) -> Bool {
         return rhs.contains(lhs)
     }
 }
@@ -10,7 +10,7 @@ extension Array where Element: Equatable {
 open class ConstraintUtils {
     
     @discardableResult
-    public static func setToFitSuperView(superView: UIView, view: UIView, topMargin: CGFloat = 0, leftMargin: CGFloat = 0, bottomMargin: CGFloat = 0, rightMargin: CGFloat = 0) -> [NSLayoutConstraint] {
+    static func setToFitSuperView(superView: UIView, view: UIView, topMargin: CGFloat = 0, leftMargin: CGFloat = 0, bottomMargin: CGFloat = 0, rightMargin: CGFloat = 0) -> [NSLayoutConstraint] {
         view.translatesAutoresizingMaskIntoConstraints = false
 
         let constraints: [NSLayoutConstraint] = [
@@ -25,7 +25,7 @@ open class ConstraintUtils {
     }
    
     @discardableResult
-    public static func setLeadingAndTrailingToSuperView(superView: UIView, view: UIView, leftMargin: CGFloat = 0, rigthMargin: CGFloat = 0) -> [NSLayoutConstraint] {
+    static func setLeadingAndTrailingToSuperView(superView: UIView, view: UIView, leftMargin: CGFloat = 0, rigthMargin: CGFloat = 0) -> [NSLayoutConstraint] {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let constraints: [NSLayoutConstraint] = [
@@ -38,7 +38,7 @@ open class ConstraintUtils {
     }
     
     @discardableResult
-    public static func setTopToTopOfView(superView: UIView, view: UIView, topMargin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
+    static func setTopToTopOfView(superView: UIView, view: UIView, topMargin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint: NSLayoutConstraint = view.topAnchor.constraint(equalTo: superView.topAnchor, constant: topMargin)
@@ -49,7 +49,7 @@ open class ConstraintUtils {
     }
     
     @discardableResult
-    public static func setTopToBottomOfView(superView: UIView, view: UIView, topMargin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
+    static func setTopToBottomOfView(superView: UIView, view: UIView, topMargin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint: NSLayoutConstraint = view.topAnchor.constraint(equalTo: superView.bottomAnchor, constant: topMargin)
@@ -60,7 +60,7 @@ open class ConstraintUtils {
     }
     
     @discardableResult
-    public static func setBottomToBottomOfView(superView: UIView, view: UIView, margin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
+    static func setBottomToBottomOfView(superView: UIView, view: UIView, margin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint: NSLayoutConstraint = view.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -margin)
@@ -71,7 +71,7 @@ open class ConstraintUtils {
     }
     
     @discardableResult
-    public static func setBottomToTopOfView(superView: UIView, view: UIView, bottomMargin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
+    static func setBottomToTopOfView(superView: UIView, view: UIView, bottomMargin: CGFloat = 0, priority: UILayoutPriority = .defaultHigh) -> NSLayoutConstraint {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint: NSLayoutConstraint = view.bottomAnchor.constraint(equalTo: superView.topAnchor, constant: bottomMargin)
@@ -84,7 +84,7 @@ open class ConstraintUtils {
     // MARK: - Height
     
     @discardableResult
-    public static func setHeightEqual(view: UIView, height: CGFloat) -> NSLayoutConstraint {
+    static func setHeightEqual(view: UIView, height: CGFloat) -> NSLayoutConstraint {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint: NSLayoutConstraint = view.heightAnchor.constraint(equalToConstant: height)
@@ -96,7 +96,7 @@ open class ConstraintUtils {
     // MARK: - Center
     
     @discardableResult
-    public static func setCenterXToView(superView: UIView, view: UIView) -> NSLayoutConstraint {
+    static func setCenterXToView(superView: UIView, view: UIView) -> NSLayoutConstraint {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint: NSLayoutConstraint = view.centerXAnchor.constraint(equalTo: superView.centerXAnchor)
@@ -106,7 +106,7 @@ open class ConstraintUtils {
     }
     
     @discardableResult
-    public static func setCenterYToView(superView: UIView, view: UIView) -> NSLayoutConstraint {
+    static func setCenterYToView(superView: UIView, view: UIView) -> NSLayoutConstraint {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint: NSLayoutConstraint = view.centerYAnchor.constraint(equalTo: superView.centerYAnchor)
