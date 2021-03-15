@@ -22,7 +22,7 @@ class OrderWireframe: BaseWireframe {
     }
     
     private func presentSelectStock() {
-        let viewModel = SelectStockViewModel(
+        let presenter = SelectStockPresenter(
             stockManager: StockManager(),
             balanceManager: BalanceManager(),
             depoManager: DepoManager(),
@@ -32,7 +32,7 @@ class OrderWireframe: BaseWireframe {
             }
         )
         let view = SelectStockView()
-        view.viewModel = viewModel
+        view.presenter = presenter
         
         present(on: entryPoint, viewController: view, animated: true)
     }

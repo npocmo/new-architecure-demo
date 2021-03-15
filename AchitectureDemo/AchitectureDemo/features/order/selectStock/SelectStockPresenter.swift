@@ -1,22 +1,22 @@
-import Foundation
 import RxSwift
 import RxDataSources
 
-protocol SelectStockViewModelProtocol: SelectStockViewModelProtocolInput, SelectStockViewModelProtocolOutput {}
+protocol SelectStockPresenterProtocol: SelectStockPresenterProtocolInput, SelectStockPresenterProtocolOutput {}
 
-protocol SelectStockViewModelProtocolInput {
+protocol SelectStockPresenterProtocolInput {
     func viewDidLoad()
     func onRefreshButtonTouched()
     func onNextButtonTouched(stockId: String?)
 }
 
-protocol SelectStockViewModelProtocolOutput {
-    var stocks: BehaviorSubject<[SelectStockTableCellModel]?> { get }
+protocol SelectStockPresenterProtocolOutput {
+    // Presentation Model
+    var stocks: BehaviorSubject<[SelectStockViewState]?> { get }
     var giroBalance: BehaviorSubject<String?> { get }
     var depoBalance: BehaviorSubject<String?> { get }
 }
 
-enum SelectStockTableCellModel {
+enum SelectStockViewState {
     case idle
     case loading
     case empty
@@ -24,16 +24,16 @@ enum SelectStockTableCellModel {
     case dataAvailable(stock: String)
 }
 
-class SelectStockViewModel: SelectStockViewModelProtocol {
+class SelectStockPresenter: SelectStockPresenterProtocol {
     
     private let stockManager: StockManager
     private let balanceManager: BalanceManager
     private let depoManager: DepoManager
     private let nextHandler: ((String) -> Void)?
     
-    // MARK: SelectStockViewModelProtocolOutput
+    // MARK: SelectStockPresenterProtocolOutput
     
-    var stocks = BehaviorSubject<[SelectStockTableCellModel]?>(value: nil)
+    var stocks = BehaviorSubject<[SelectStockViewState]?>(value: nil)
     var giroBalance = BehaviorSubject<String?>(value: nil)
     var depoBalance = BehaviorSubject<String?>(value: nil)
     
@@ -49,7 +49,7 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
     // MARK: Managers
     
     func fetchStocks() {
-        stocks.onNext([SelectStockTableCellModel.loading])
+        stocks.onNext([SelectStockViewState.loading])
         
         stockManager.getStocks(
             completionHandler: { [weak self] result in
@@ -62,20 +62,20 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
         switch result {
         case .success(let value):
             if value.isEmpty {
-                stocks.onNext([SelectStockTableCellModel.empty])
+                stocks.onNext([SelectStockViewState.empty])
                 return
             }
             
             stocks.onNext(createStocksDataAvailableArray(value))
         case .failure(let error):
-            stocks.onNext([SelectStockTableCellModel.error(error: error)])
+            stocks.onNext([SelectStockViewState.error(error: error)])
         }
     }
     
-    private func createStocksDataAvailableArray(_ stocks: [String]) -> [SelectStockTableCellModel] {
-        var result = [SelectStockTableCellModel]()
+    private func createStocksDataAvailableArray(_ stocks: [String]) -> [SelectStockViewState] {
+        var result = [SelectStockViewState]()
         for stock in stocks {
-            result.append(SelectStockTableCellModel.dataAvailable(stock: stock))
+            result.append(SelectStockViewState.dataAvailable(stock: stock))
         }
         return result
     }
@@ -108,7 +108,7 @@ class SelectStockViewModel: SelectStockViewModelProtocol {
         )
     }
     
-    // MARK: SelectStockViewModelProtocolInput
+    // MARK: SelectStockPresenterProtocolInput
     
     func viewDidLoad() {
         fetchStocks()

@@ -7,7 +7,7 @@ protocol SelectStockViewProtocol: UIViewController {
 
 class SelectStockView: UIViewController, SelectStockViewProtocol {
         
-    var viewModel: SelectStockViewModelProtocol?
+    var presenter: SelectStockPresenterProtocol?
         
     private var containerView = UIView()
     private var titleLabel = UILabel()
@@ -25,20 +25,22 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        
         bindTableData()
-        bindTableClick()
         bindGiroBalanceData()
         bindDepoBalanceData()
+        
+        bindTableClick()
         bindRefreshButton()
         bindNextButton()
         
-        viewModel?.viewDidLoad()
+        presenter?.viewDidLoad()
     }
     
     // MARK: - Bind Data
     
     private func bindTableData() {
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, SelectStockTableCellModel>>(
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, SelectStockViewState>>(
             configureCell: { dataSource, tableView, indexPath, item in
                 var cellText = ""
                 switch item {
@@ -59,7 +61,7 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
             }
         )
         
-        viewModel?.stocks
+        presenter?.stocks
             .map { selectStockCellModel in
                 return [SectionModel(model: "SectionName", items: selectStockCellModel ?? [])]
             }
@@ -77,7 +79,7 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
     }
     
     private func bindGiroBalanceData() {
-        viewModel?.giroBalance
+        presenter?.giroBalance
             .compactMap {$0}
             .map { giroBalance in
                 let text = "Giro Balance = \(giroBalance)"
@@ -88,7 +90,7 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
     }
     
     private func bindDepoBalanceData() {
-        viewModel?.depoBalance
+        presenter?.depoBalance
             .compactMap {$0}
             .map { depoBalance in
                 let text = "Depo Balance = \(depoBalance)"
@@ -100,13 +102,13 @@ class SelectStockView: UIViewController, SelectStockViewProtocol {
     
     private func bindNextButton() {
         nextButton.rx.tap.bind { [weak self] in
-            self?.viewModel?.onNextButtonTouched(stockId: self?.selectedStock)
+            self?.presenter?.onNextButtonTouched(stockId: self?.selectedStock)
         }.disposed(by: disposeBag)
     }
     
     private func bindRefreshButton() {
         refreshButton.rx.tap.bind { [weak self] in
-            self?.viewModel?.onRefreshButtonTouched()
+            self?.presenter?.onRefreshButtonTouched()
         }.disposed(by: disposeBag)
     }
     

@@ -46,7 +46,7 @@
 		43AB105E25E7C4FC004DB1B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB105D25E7C4FC004DB1B8 /* HomeView.swift */; };
 		43AB106A25E7CA0C004DB1B8 /* OrderWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB106925E7CA0C004DB1B8 /* OrderWireframe.swift */; };
 		43AB107025E7CB01004DB1B8 /* SelectStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB106F25E7CB01004DB1B8 /* SelectStockView.swift */; };
-		43AB10A225E7CDD6004DB1B8 /* SelectStockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB10A125E7CDD6004DB1B8 /* SelectStockViewModel.swift */; };
+		43AB10A225E7CDD6004DB1B8 /* SelectStockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB10A125E7CDD6004DB1B8 /* SelectStockPresenter.swift */; };
 		43AB10A825E7CF73004DB1B8 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB10A725E7CF73004DB1B8 /* StockManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,7 +110,7 @@
 		43AB105D25E7C4FC004DB1B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		43AB106925E7CA0C004DB1B8 /* OrderWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWireframe.swift; sourceTree = "<group>"; };
 		43AB106F25E7CB01004DB1B8 /* SelectStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStockView.swift; sourceTree = "<group>"; };
-		43AB10A125E7CDD6004DB1B8 /* SelectStockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStockViewModel.swift; sourceTree = "<group>"; };
+		43AB10A125E7CDD6004DB1B8 /* SelectStockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStockPresenter.swift; sourceTree = "<group>"; };
 		43AB10A725E7CF73004DB1B8 /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -459,7 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				43AB106F25E7CB01004DB1B8 /* SelectStockView.swift */,
-				43AB10A125E7CDD6004DB1B8 /* SelectStockViewModel.swift */,
+				43AB10A125E7CDD6004DB1B8 /* SelectStockPresenter.swift */,
 			);
 			path = selectStock;
 			sourceTree = "<group>";
@@ -623,7 +623,7 @@
 				432D5B5925C80011005BF279 /* RestService.swift in Sources */,
 				4356075C25C2AA5D00DA98ED /* AmountInputView.swift in Sources */,
 				432D5BA225C82711005BF279 /* Observable+Response.swift in Sources */,
-				43AB10A225E7CDD6004DB1B8 /* SelectStockViewModel.swift in Sources */,
+				43AB10A225E7CDD6004DB1B8 /* SelectStockPresenter.swift in Sources */,
 				43AB106A25E7CA0C004DB1B8 /* OrderWireframe.swift in Sources */,
 				436E458725C2FA610055BB97 /* AccountType.swift in Sources */,
 				4356075825C2AA5D00DA98ED /* AppDelegate.swift in Sources */,
